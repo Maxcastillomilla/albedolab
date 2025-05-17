@@ -1,0 +1,11 @@
+/* .grilla-standar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, #000000 1px, transparent 1px), linear-gradient(to bottom, #000000 1px, transparent 1px);
+  background-size: calc(100% / 4) calc(100% / 4);
+  aspect-ratio: 1 / 1;
+}
+ */

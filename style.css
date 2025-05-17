@@ -7,6 +7,7 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+body {  font-family: 'Roboto', sans-serif; }
 
 .right-nav {
   position: fixed;
@@ -16,6 +17,17 @@ body {
   z-index: 1000; /* Ensure it's on top */
 }
 
+#section-title {
+  position: absolute;
+  /* left: -30px; */ /* Adjust as needed */
+  /* top: 50%; */
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left top;
+  color: rgb(0, 0, 0); /* Or your desired color */
+  font-size: 16px; /* Adjust as needed */
+  white-space: nowrap;
+  font-weight: bold;
+}
 
 .sin-scrollbar {
   overflow: auto;            /* o scroll si lo prefieres */

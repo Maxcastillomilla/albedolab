@@ -92,6 +92,8 @@
   #chapa2{
         grid-row-start: 3;
         width: 50vw;
+        grid-column-start: 2;
+        
   }
 
 

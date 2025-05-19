@@ -1,0 +1,105 @@
+.gridsystem{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 30vh;
+
+    /* aspect-ratio: 1 / 1; */
+}
+
+.gridsystem > * {
+  /* aspect-ratio: 1 / 1; */
+  width: 100%;
+  height: 100%;
+}
+
+.gridsystem > div {
+  outline: 1px solid #ccc;
+}
+
+/* contenido 01 */
+
+
+
+#Textoquesomos {
+  grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+}
+
+#fotomax{
+  grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+}
+
+#chapa1{
+  grid-column-start: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Ensure no padding */
+}
+
+#chapa2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Ensure no padding */
+  grid-column-start: 5;
+    grid-row-start: 2;
+}
+
+
+
+
+@media (max-width: 590px) {
+
+  .gridsystem{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);   
+    grid-auto-rows: auto;
+  
+      /* aspect-ratio: 1 / 1; */
+  }
+
+
+  .gridsystem > div > img {
+    width: 75%;
+    height: auto;
+    /* object-fit: cover; */
+  }
+
+  #Textoquesomos {
+    width: 100vw;
+    grid-column: span 2;
+ grid-row: span 1;
+  }
+
+  #fotomax{
+    width: 100vw;
+ grid-column: span 2;
+ grid-row: span 1;
+    grid-row-start: 2;
+  }
+
+  #chapa1{
+    
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    width: 50vw;
+  }
+
+  #chapa2{
+        grid-row-start: 3;
+        width: 50vw;
+  }
+
+
+
+
+
+
+
+
+
+}

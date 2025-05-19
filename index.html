@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
-  <link href='/grilla.css' rel='stylesheet'>
-  <link href='/grid-layout.css' rel='stylesheet'>
+  <title>Albedo-Lab</title>
+  <link href='/css/style.css' rel='stylesheet'>
+  <link href='/css/grilla.css' rel='stylesheet'>
+  <link href='/css/grid-layout.css' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <meta name="google-site-verification" content="Q8f6N6tF6T4X0H7yQ6N0L9Q7D8t5F1K3L2P7K6M4M8I" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script src="https://unpkg.com/gsap@latest/dist/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/gsap@latest/dist/gsap.min.js"></script>
+  <link rel="icon" href="/imagenes/albedolab_32x32.png" type="image/png">
+  <link href='/css/dropdown-menu.css' rel='stylesheet'>
 
   <script type="importmap">
     {
@@ -27,6 +29,7 @@
   </script>
 
 
+ <script src="/js/mobile-nav-toggle.js"></script>
 
 
 </head>
@@ -34,8 +37,90 @@
 
 
 <body class="sin-scrollbar">
+
+
+
+
+
+  
+  <nav role="navigation">
+    <div id="menuToggle">
+      <!--
+      A fake / hidden checkbox is used as click reciever,
+      so you can use the :checked selector on it.
+      -->
+      <input type="checkbox" id="menuCheckbox" />
+      
+      <!--
+      Some spans to act as a hamburger.
+      
+      They are acting like a real hamburger,
+      not that McDonalds stuff.
+      -->
+      <span></span>
+      <span></span>
+      <span></span>
+      
+      <!--
+      Too bad the menu has to be inside of the button
+      but hey, it's pure CSS magic.
+      -->
+      <ul id="menu">
+
+        <img id="logomenu"  src="./imagenes/albedolab.png" alt="">
+        <!-- 
+        We can use a label here to close upon click (when doing same page navigation), this
+        does require a slight bit of JS.
+        -->
+        <li>
+          <a href="#">
+            <label for="menuCheckbox" onclick="this.parentNode.click();">INICIO</label>
+          </a>
+        </li>
+        <li>
+          <a href="#S-Who">
+            <label for="menuCheckbox" onclick="this.parentNode.click();">WHO WE ARE</label>
+          </a>
+        </li>
+        <li>
+          <a href="#S-CREAMOS">
+            <label for="menuCheckbox" onclick="this.parentNode.click();">WHAT WE DO</label>
+          </a>
+        </li>
+        <li>
+          <a href="#S-CONTACTO">
+            <label for="menuCheckbox" onclick="this.parentNode.click();">CONTACT</label>
+          </a>
+        </li>
+        <li>
+          <a href="#S-WORK">
+            <label for="menuCheckbox" onclick="this.parentNode.click();">WORK</label>
+          </a>
+        </li>
+        
+        
+        
+        
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <canvas id="canvas"></canvas>
-  <nav class="right-nav">
+
+  <nav class="right-nav"></nav>
+  <!-- <nav class="right-nav">
     <span id="section-title"></span>
     <ul id="nav-list">
       <li><a href="#"><div class="nav-circle"></div></a></li>
@@ -44,10 +129,10 @@
  <li><a href="#S-CONTACTO"><div class="nav-circle"></div></a></li>
  <li><a href="#S-WORK"><div class="nav-circle"></div></a></li>
     </ul>
-  </nav>
+  </nav> -->
 
 
-
+  
   
     <div class="grilla" id="grid-container"></div>
 
@@ -59,6 +144,7 @@
     </div>
 
     <div class="arrow-wrapper">
+      <span style="white-space: nowrap;"">VER MÁS</span>
       <div class="arrow-down"></div>
     </div>
 
@@ -72,18 +158,32 @@ Convertimos tus ideas en proyectos reales, desde el modelado 3D hasta la program
 
     <section style="margin-top: 30px;"  class="gridsystem">
 
-      <div class="grid-col-1-span-2 grid-row-1">
-        <img src="https://via.placeholder.com/300x200" alt="Placeholder Image">
+      <div id="Textoquesomos">
+        <h1 class="TextoNarrativa">Somos un <span style="font-weight: bold;">Círculo creativo de experiencias inmersivas</span>. 
+          <br>Convertimos tus ideas en proyectos reales, 
+          desde 
+          el modelado 3D <br> hasta la programación, 
+          con especialización en diseño CAD,  <br>
+          representación visual, 
+           Blender, Unreal Engine 
+          y desarrollo de filtros AR.
+          <br>
+          <br>
+          Bajo la dirección de <span style="font-weight: bold;">Maximiliano Castillo Milla</span>, diseñador con Máster<br>
+           en Innovación y Diseño y especializado en diseño experimental e inmersivo, damos forma<br>
+           a tus ideas mediante prototipos iterativos, asegurando coherencia técnica y narrativa.</h1>
+
       </div>
-      <div class="grid-col-3 grid-row-1-span-2">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div id="fotomax" >
+        <img src="./imagenes/max_Logo.png" alt="Maximiliano Castillo" class="degradadopng">
       </div>
-      <div class="grid-col-1 grid-row-2">
-        <h2>Some Text</h2>
+      <div id="chapa1" >
+        <img src="./imagenes/meta.png" alt="Maximiliano Castillo" class="imagengeneral">
       </div>
-      <div class="grid-col-2 grid-row-2">
-        <p>More text content here.</p>
+      <div id="chapa2" >
+        <img src="./imagenes/UE5.png" alt="Maximiliano Castillo" class="imagengeneral">
       </div>
+      
       
       
   </section>
@@ -122,6 +222,7 @@ Convertimos tus ideas en proyectos reales, desde el modelado 3D hasta la program
 
 <div  id="S-CONTACTO">
   <Div class="TITULOS">Comuniquémonos</Div>
+  <div style="height: 30vh; width: 100%;">A</div>
 </div>
 
 
@@ -164,12 +265,12 @@ Convertimos tus ideas en proyectos reales, desde el modelado 3D hasta la program
 
 
   
-
-  <script type="module" src="/three.js"></script>
-  <script type="module" src="/manolo.js"></script>
-  <script type="module" src="/Cambio.js"></script>
- <script src="/no-zoom.js"></script>
- <script src="/nav-highlight.js"></script>
+<script src="js/nav.js"></script>
+  <script type="module" src="/js/three.js"></script>
+  <script type="module" src="/js/manolo.js"></script>
+  <script type="module" src="/js/Cambio.js"></script>
+ <script src="/js/no-zoom.js"></script>
+ <script src="/js/nav-highlight.js"></script>
 
 
 

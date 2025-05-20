@@ -125,7 +125,7 @@
     padding-top: 30px;
     box-sizing: border-box;
     overflow-y: auto;
-    background: #ededed;
+    background: #ffffff;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
@@ -134,6 +134,9 @@
     transform: translate(300px , 0);
     
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    box-shadow: 2px 2px 5px #888888;
+
+    
   }
   
   #menu li

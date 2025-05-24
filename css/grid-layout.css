@@ -176,7 +176,7 @@
   padding: 0;
 }
 
-#canvassilla{
+#parentcanvassilla{
    grid-area: 3 / 1 / 5 / 6; 
    z-index: -1;
 }
@@ -236,7 +236,7 @@ justify-content: center; /* Centra los elementos horizontalmente en el contenedo
  }
 
   
-  #canvassilla{
+  #parentcanvassilla{
      grid-area: 6 / 1 / 7 / 3; 
   }
 

@@ -116,6 +116,8 @@ const loop = () => {
   // Ajusta el “then” descontando el exceso para mantener el ritmo
   then = now - ( elapsed % fpsInterval );
 
+ if (!isRendering) return; // Stop rendering if isRendering is false
+ 
   // Calcula delta en segundos (para tu rotación)
   const delta = elapsed / 1000;
 
@@ -128,7 +130,36 @@ const loop = () => {
   renderer.render(scene, camera);
 };
 
+let isRendering = true; // Variable para controlar el estado de renderizado
+
 loop();
+
+function toggleRendering(render) {
+  isRendering = render;
+  if (isRendering) {
+    loop(); // Start rendering if isRendering is true
+  }
+}
+
+// IntersectionObserver to control rendering based on canvas visibility
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      console.log("Canvas is in the viewport, starting rendering.");
+      toggleRendering(true);
+    } else {
+      console.log("Canvas is out of the viewport, stopping rendering.");
+      toggleRendering(false);
+    }
+  });
+});
+
+// Observe the canvas element
+observer.observe(canvas);
+
+// You can disconnect the observer later if needed, for example:
+// observer.disconnect();
+
 
 
 function obtenerEstado() {

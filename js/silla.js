@@ -78,6 +78,10 @@ loader.load(
 );
 
 
+// Scene Rendering
+const canvas = document.getElementById('canvassilla')
+
+
 
 let planta
 
@@ -117,8 +121,8 @@ loader.load(
 
 
 const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight
+  width: canvas.parentElement.clientWidth,
+  height: canvas.parentElement.clientHeight
 }
 
 // Light
@@ -133,13 +137,13 @@ scene.add(ambientLight);
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
-  9,                   // fov
-  window.innerWidth / window.innerHeight,
-  0.01,                 // near: lo bajamos a 1 centímetro
+  6,                   // fov
+  sizes.width / sizes.height,
+  0.1,                 // near: lo bajamos a 1 centímetro
   100                  // far
 );
 /* const camera = new THREE.PerspectiveCamera(45, , 0.1, 35) */
-camera.position.z = 23.43
+camera.position.z = 20
 camera.position.x = 16.12
 camera.position.y = 10.75
 
@@ -153,12 +157,10 @@ camera.updateProjectionMatrix()
 
 /* {x: 16.125239376455138, y: 10.753674306823573, z: 23.43789973429334} */
 
-// Scene Rendering
-const canvas = document.getElementById('canvassilla')
+
 const renderer = new THREE.WebGLRenderer({ canvas })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(2)
-renderer.render(scene, camera)
 renderer.alpha = true
 renderer.antialias = true
 
@@ -180,14 +182,17 @@ controls.enableZoom = false
 controls.autoRotate = false
 /* controls.autoRotateSpeed = 2 */
 
-controls.minPolarAngle = Math.PI / 2;
-controls.maxPolarAngle = Math.PI / 2;
+/* controls.minPolarAngle = Math.PI / 2;
+controls.maxPolarAngle = Math.PI / 2; */
+
+controls.target.set(0, 0.9, 0);
+controls.update();
 
 // Resize
 window.addEventListener('resize', () => {
   // Update sizes
-  sizes.width = window.innerWidth
-  sizes.height = window.innerHeight
+  sizes.width = canvas.parentElement.clientWidth;
+  sizes.height = canvas.parentElement.clientHeight;
 
   // Update camera
   camera.aspect = sizes.width / sizes.height
@@ -416,6 +421,29 @@ const fpsInterval = 1000 / 24; // ms entre cada frame (~41.67 ms)
 let then = Date.now();
 
 const loop = () => {
+
+ // Variable para controlar el estado de renderizado
+let isRendering = true; 
+
+ // Función para activar o desactivar el renderizado
+function toggleRendering(isRenderingState) {
+ isRendering = isRenderingState;
+}
+
+// Observador de intersección para el canvas
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      toggleRendering(true); // Activar renderizado cuando el canvas está visible
+    } else {
+      toggleRendering(false); // Desactivar renderizado cuando el canvas no está visible
+    }
+  });
+});
+
+// Observar el canvas
+observer.observe(canvas);
+
   window.requestAnimationFrame(loop);
 
   const now   = Date.now();
@@ -438,11 +466,15 @@ const loop = () => {
   //   Modelito.rotation.y += rotationSpeed * delta;
   // }
 
-  controls.update();
-  renderer.render(scene, camera);
+  if (isRendering) {
+    controls.update();
+    renderer.render(scene, camera);
+  }
+
 };
 
 loop();
+
 
 
 

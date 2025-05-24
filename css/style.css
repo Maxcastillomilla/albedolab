@@ -21,6 +21,27 @@ body {  font-family: 'Roboto', sans-serif; }
     transparent
   );
 }
+.centered-image {
+  height: 100%;
+}
+
+#principito {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.colores {
+  position: relative;          /* habilita z-index */
+  z-index: -2;  
+  background-size: cover;                /* por encima del texto */
+  
+  /* opacity: 0.6; */
+ 
+  object-fit: contain;
+  /* min-height: 30vh; */
+  max-width: 100%;
+  
+}
 
 .imagengeneral{  
   width: 60%;
@@ -93,6 +114,9 @@ body {  font-family: 'Roboto', sans-serif; }
   mix-blend-mode: multiply;
 
 }
+.autosize{
+  height: fit-content;
+}
 
 #logo_aqui img {
   width: auto;
@@ -133,6 +157,7 @@ body {  font-family: 'Roboto', sans-serif; }
   padding-left: 20px;
   padding-right: 20px;
   width: 90%;
+  z-index: 1; 
 }
 
 #grid-container {
@@ -267,7 +292,7 @@ body {  font-family: 'Roboto', sans-serif; }
 #menuToggle{display: none !important;}
   #menu{display: none !important;}
 
-@media (max-width: 590px) {
+@media (max-width: 1020px) {
 
   .imagengeneral{  
     width: 60% !important;

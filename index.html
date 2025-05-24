@@ -159,19 +159,23 @@ Convertimos tus ideas en proyectos reales, desde el modelado 3D hasta la program
     <section style="margin-top: 30px;"  class="gridsystem">
 
       <div id="Textoquesomos">
-        <h1 class="TextoNarrativa">Somos un <span style="font-weight: bold;">Círculo creativo de experiencias inmersivas</span>. 
-          <br>Convertimos tus ideas en proyectos reales, 
-          desde 
-          el modelado 3D <br> hasta la programación, 
-          con especialización en diseño CAD,  <br>
-          representación visual, 
-           Blender, Unreal Engine 
-          y desarrollo de filtros AR.
-          <br>
-          <br>
-          Bajo la dirección de <span style="font-weight: bold;">Maximiliano Castillo Milla</span>, diseñador con Máster<br>
-           en Innovación y Diseño y especializado en diseño experimental e inmersivo, damos forma<br>
-           a tus ideas mediante prototipos iterativos, asegurando coherencia técnica y narrativa.</h1>
+        <h1 class="TextoNarrativa">
+
+          Somos <span style="font-weight: bold;">un Círculo creativo</span> de experiencias inmersivas y diseño, donde convergen 
+           la cooperación, arte e innovación. Convertimos tus ideas en proyectos reales —del modelado 3D a la programación— con 
+           especialización en CAD, Blender, Unreal Engine y filtros AR.
+            
+            <br><br>
+            <span style="font-weight: bold;"> Co-creamos </span>con organizaciones públicas, privadas, educativas y PyMEs soluciones a medida.<br><br>
+            Bajo la dirección de <span style="font-weight: bold;">Maximiliano Castillo Milla</span> (Máster en Innovación y Diseño), desarrollamos prototipos iterativos con rigor técnico y coherencia narrativa.
+                      
+        </h1>
+          
+          
+
+
+
+
 
       </div>
       <div id="fotomax" >
@@ -198,17 +202,73 @@ Convertimos tus ideas en proyectos reales, desde el modelado 3D hasta la program
 
     <section style="margin-top: 30px;"  class="gridsystem">
 
-        <div class="grid-col-1-span-2 grid-row-1">
-          <img src="https://via.placeholder.com/300x200" alt="Placeholder Image">
+        <div id="marcorojo" class="nooutline">
+          <img src="./imagenes/rojo.png" class="colores">
         </div>
-        <div class="grid-col-3 grid-row-1-span-2">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div id="marcoverde" class="nooutline">
+          <img src="./imagenes/verde.png" class="colores">
         </div>
-        <div class="grid-col-1 grid-row-2">
-          <h2>Some Text</h2>
+        <div id="marcoazul" class="nooutline">
+            
         </div>
-        <div class="grid-col-2 grid-row-2">
-          <p>More text content here.</p>
+        <div id="Textoquehacemos" >
+          <h1 class="TextoNarrativa">
+
+           
+            
+            Convertimos tus ideas en experiencias digitales inmersivas: <br>
+            webs, apps y prototipos 3D interactivos. Diseñamos y ejecutamos cada etapa <br>
+            —desde el concepto y la planificación hasta la iteración técnica y el lanzamiento— <br>
+            con un flujo ágil y coherente. Creamos configuradores de materiales, <br>
+            filtros de realidad aumentada y entornos virtuales para empresas, <br>
+             museos y marcas, integrando innovación, estética y narrativa en cada proyecto.
+
+          </h1>
+  
+        </div>
+
+        <div id="fotomedios" >
+          <img src="./imagenes/medios.png" alt="Dario Crtic"  class=" centered-image">
+        </div>
+        <div id="fotocigiden" >
+          <img src="./imagenes/cigidenmuseo.png" alt="Unreal Engine" class=" centered-image">
+        </div>
+        <div id="fotocrtic" >
+            <img src="./imagenes/sparkar.jpg" alt="Spark Ar" class=" centered-image">
+ 
+        </div>
+
+
+           
+      
+
+
+
+     <div id="botonessilla" style="z-index: 999; position: relative;">
+      <div style="position: absolute; bottom: 0; right: 0; color: black; z-index: 10; font-size: 1.2rem; padding-right: 10px;">Model By Enrique Shieh</div>
+      <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); font-weight: bold; padding-top: 12px; font-size: 1.5rem;">configurador</div>
+
+      <button id="azul" class="circular-button" style="background-color: blue;"></button>
+      <button id="verde" class="circular-button" style="background-color: green;"></button>
+      <button id="plomo" class="circular-button" style="background-color: grey;"></button>
+
+      <button id="cartel2" class="circular-button" style="background-image: url('imagenes/mv.jpg'); background-size: cover;"></button>
+      <button id="cartel1" class="circular-button" style="background-image: url('imagenes/albedolab_grande_fondo.png'); background-size: cover;"></button>
+    </div>   
+
+<style>
+  .circular-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    
+  }
+</style>
+
+
+        <canvas id="canvassilla" style="height: 40vh; width: 100vw; z-index: 1;"></canvas>
+
   </div>
         
         
@@ -271,6 +331,7 @@ Convertimos tus ideas en proyectos reales, desde el modelado 3D hasta la program
   <script type="module" src="js/Cambio.js"></script>
  <script src="js/no-zoom.js"></script>
  <script src="js/nav-highlight.js"></script>
+ <script type="module" src="js/silla.js"></script>
 
 
 

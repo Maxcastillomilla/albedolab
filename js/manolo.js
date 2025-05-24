@@ -11,7 +11,7 @@ function main() {
 
   let columns, rows;
   let intervalId;
-  if (window.innerWidth <= 590) {
+  if (window.innerWidth <= 1020) {
     if (isModelLoaded) {
       console.log('Model has loaded');
     }

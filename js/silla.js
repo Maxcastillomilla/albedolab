@@ -412,28 +412,37 @@ if(giro==false){
 
 
 const clock = new THREE.Clock();
+const fpsInterval = 1000 / 24; // ms entre cada frame (~41.67 ms)
+let then = Date.now();
 
 const loop = () => {
+  window.requestAnimationFrame(loop);
 
-  const delta = clock.getDelta(); // tiempo en segundos desde el último frame
-  /* console.log(camera.position) */
+  const now   = Date.now();
+  const elapsed = now - then;
 
-  
+  // Si no ha pasado suficiente tiempo, salta este frame
+  if (elapsed < fpsInterval) return;
 
+  // Ajusta el “then” descontando el exceso para mantener el ritmo
+  then = now - (elapsed % fpsInterval);
 
-   /* if (Modelito) {
-    const rotationSpeed = Math.PI / 3.5; 
-    Modelito.rotation.y += rotationSpeed * delta;
-  } */
+  // Tiempo en segundos desde el último frame renderizado
+  const delta = clock.getDelta();
 
+  // console.log(camera.position);
 
-    
-  controls.update()
-  renderer.render(scene, camera)
-  window.requestAnimationFrame(loop)
-}
-loop()
+  // Aquí puedes reactivar tu lógica de rotación:
+  // if (Modelito) {
+  //   const rotationSpeed = Math.PI / 3.5;
+  //   Modelito.rotation.y += rotationSpeed * delta;
+  // }
 
+  controls.update();
+  renderer.render(scene, camera);
+};
+
+loop();
 
 
 

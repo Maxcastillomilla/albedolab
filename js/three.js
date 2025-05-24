@@ -100,22 +100,35 @@ window.addEventListener('resize', () => {
 
 })
 
-const clock = new THREE.Clock();
+const clock = new THREE.Clock(); // puedes seguir usándolo para otros fines si quieres
+const fpsInterval = 1000 / 24;    // ms que deben pasar entre cada frame (~41.67 ms)
+let then = Date.now();
 
 const loop = () => {
+  window.requestAnimationFrame(loop);
 
-  const delta = clock.getDelta(); // tiempo en segundos desde el último frame
+  const now = Date.now();
+  const elapsed = now - then;
 
+  // Si no han pasado aún los ~41.67 ms, salta este frame
+  if ( elapsed < fpsInterval ) return;
 
-   if (Modelito) {
-    const rotationSpeed = Math.PI / 3.5; 
+  // Ajusta el “then” descontando el exceso para mantener el ritmo
+  then = now - ( elapsed % fpsInterval );
+
+  // Calcula delta en segundos (para tu rotación)
+  const delta = elapsed / 1000;
+
+  if (Modelito) {
+    const rotationSpeed = Math.PI / 3.5;
     Modelito.rotation.y += rotationSpeed * delta;
   }
-  controls.update()
-  renderer.render(scene, camera)
-  window.requestAnimationFrame(loop)
-}
-loop()
+
+  controls.update();
+  renderer.render(scene, camera);
+};
+
+loop();
 
 
 function obtenerEstado() {

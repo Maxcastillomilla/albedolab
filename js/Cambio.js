@@ -53,19 +53,20 @@ class Title{
            
            
             this.frame++;
-            requestAnimationFrame(this.animate.bind(this))
-        }else{
-            console.log('done')
         }
+ if (this.idx < this.originalString.length && this.intersecting) {
+ requestAnimationFrame(this.animate.bind(this));
+ } else if (this.idx === this.originalString.length) {
+ }
     }
 
-
+    
     reset(){
         this.idx = 0;
         this.frame = 0;
         this.intersecting = false;
         [...this.element.querySelectorAll('span')].forEach(span => {
-            span.style.opacity = 0;
+            span.style.opacity = 1; // este antes era 0, cuando salia ponia invisible
             span.style.transform = `translateX(-10px)`
         })
     }
@@ -85,12 +86,14 @@ window.addEventListener('DOMContentLoaded',() => {
           let callback = (entries) => {
             entries.forEach((entry) => {
                 if(entry.isIntersecting){
-                    h1Elements[+entry.target.className].intersecting = true;
-                    h1Elements[+entry.target.className].animate()
-                  
-                }else{
-                    h1Elements[+entry.target.className].reset()
-                }
+                    // Check if animation has run before using the hasAnimated flag
+                    if(!h1Elements[+entry.target.className].hasAnimated){ // Check if animation has run before
+                        h1Elements[+entry.target.className].intersecting = true;
+                        h1Elements[+entry.target.className].animate()
+                        // Set the flag after the animation starts to ensure it only runs once
+                        h1Elements[+entry.target.className].hasAnimated = true; 
+                    }
+                } // Removed the else block to prevent resetting when not intersecting
             });
           };
         
